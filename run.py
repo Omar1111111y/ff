@@ -1,4 +1,4 @@
-#
+import threading
 import requests
 import cloudscraper
 from itertools import zip_longest
@@ -79,8 +79,12 @@ def get_tmm(om):
 
 if __name__ == '__main__':
     #app.run(host='8.8.8.8')
-#    tutorialbar()
-    app.run()
+    tm = threading.Thread(target = tutorialbar,args=())
+    tt = threading.Thread(target = app.run,args=())
+##########
+    #tt.start()
+    tm.start()
+    tt.start()
 
 #############
 
