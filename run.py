@@ -51,7 +51,7 @@ def tutorialbar():
     z = list(zip_longest(an,ttt,uur))
     #print (z)
 ######################
-tutorialbar()
+#tutorialbar()
 #print (z)
 app = Flask(__name__)
 @app.route('/',methods=['GET','POST'])
