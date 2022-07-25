@@ -61,33 +61,37 @@ def tutorialbar():
 ######################
 #tutorialbar()
 #print (z)
-    app = Flask(__name__)
-    @app.route('/',methods=['GET','POST'])
-    def hello_world():
-        if request.method == 'POST':
-            pass
-        else: #GET
-            return jsonify({'help':'Omar => Omar'})
+
+app = Flask(__name__)
+@app.route('/',methods=['GET','POST'])
+def hello_world():
+    tutorialbar()
+    if request.method == 'POST':
+        pass
+    else: #GET
+        return jsonify({'help':'Omar => Omar'})
     
 ######################
     #z = list(zip_longest(an,ttt,uur)) 
     #print (z)
 ##################### API
-    @app.route('/omar_style/<om>')
-    def get_tmm(om):
-        with open("omar.json","r") as f :
-            con = json.loads(f.read())
+@app.route('/omar_style/<om>')
+def get_tmm(om):
+    with open("omar.json","r") as f :
+        con = json.loads(f.read())
 
     #nn = list.get(om)
-        if om == 'omar':
-            nn = con.get("name")
-            return jsonify({'name':nn})
-        else:
-            return jsonify({'Eerrrrlo => Omar_Style ':om})
+    if om == 'omar':
+        nn = con.get("name")
+        return jsonify({'name':nn})
+    else:
+        return jsonify({'Eerrrrlo => Omar_Style ':om})
 
-    app.run(debug=True)
+    #app.run(debug=True)
 if __name__ == '__main__':
-    tutorialbar()
+    #ppp()
+    app.run(debug=True)
+#    tutorialbar()
     #app.run(host='8.8.8.8')
 #    tutorialbar()
 #    tt = threading.Thread(target = app.run(port=3399),args=())
