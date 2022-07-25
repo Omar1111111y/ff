@@ -1,3 +1,4 @@
+import json
 import threading
 import requests
 import cloudscraper
@@ -29,7 +30,7 @@ def tutorialbar():
         link = soup.find("a", class_="btn_offer_block re_track_btn")["href"]
         if "www.udemy.com" in link:
            # tb_links.append(title + "|:|" + link)
-            #print (link)
+             print (link)
              pass
 ###################   bul   #########
         s = cloudscraper.CloudScraper()
@@ -49,44 +50,55 @@ def tutorialbar():
         uur.append(link)
 ####################
     z = list(zip_longest(an,ttt,uur))
+    mm = "name"
+    m = {mm:z}
+    with open('omar.json','w') as f:
+        gg = json.dumps(m)
+        f.write(gg)
+   # t()
+###################################
     #print (z)
 ######################
 #tutorialbar()
 #print (z)
-app = Flask(__name__)
-@app.route('/',methods=['GET','POST'])
-def hello_world():
-    if request.method == 'POST':
-        pass
-    else: #GET
-        return jsonify({'help':'Omar => عمر موجود على التليجرام'})
+    app = Flask(__name__)
+    @app.route('/',methods=['GET','POST'])
+    def hello_world():
+        if request.method == 'POST':
+            pass
+        else: #GET
+            return jsonify({'help':'Omar => Omar'})
     
 ######################
     #z = list(zip_longest(an,ttt,uur)) 
     #print (z)
 ##################### API
-#list = {'m':'["bbbbb","mmm","kkkk"]'}
-@app.route('/omar_style/<om>')
-def get_tmm(om):
+    @app.route('/omar_style/<om>')
+    def get_tmm(om):
+        with open("omar.json","r") as f :
+            con = json.loads(f.read())
+
     #nn = list.get(om)
-    if om == 'omar':
-        nn = z.get(om)
-        return jsonify({'name':nn})
-    else:
-        return jsonify({'Eerrrrlo => Omar_Style ':om})
+        if om == 'omar':
+            nn = con.get("name")
+            return jsonify({'name':nn})
+        else:
+            return jsonify({'Eerrrrlo => Omar_Style ':om})
 
-####################
-
+    app.run(debug=True)
 if __name__ == '__main__':
+    tutorialbar()
     #app.run(host='8.8.8.8')
-    tm = threading.Thread(target = tutorialbar,args=())
-    tt = threading.Thread(target = app.run,args=())
-##########
-    #tt.start()
-    tm.start()
-    tt.start()
+#    tutorialbar()
+#    tt = threading.Thread(target = app.run(port=3399),args=())
+ #   tm = threading.Thread(target = tutorialbar,args=())
+    #tt = threading.Thread(target = app.run,args=())
 
-#############
+###############################################
 
+  #  tm.start()
+   # tt.start()
+#    tutorialbar()
+    #app.run(port=3333)
+#####################
 
-#tutorialbar()
